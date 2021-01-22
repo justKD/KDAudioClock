@@ -12,7 +12,7 @@ It's based on [WAAClock](https://github.com/sebpiq/WAAClock) by [@sebpiq](https:
 
 ## Demo
 
-[KDAudioClock Examples and Documentation](http://url.com/)
+[KDAudioClock Examples and Documentation](https://kdaudioclockdemo.justkd.app/)
 
 ## Basic Use
 
