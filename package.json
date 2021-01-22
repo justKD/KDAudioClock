@@ -1,7 +1,7 @@
 {
-  "name": "107",
+  "name": "kdaudioclock-master",
   "version": "1.0.7",
-  "description": "",
+  "description": "KDAudioClock creates and manages timed events, which are each assigned unique identifiers. It also includes event syncing, time stretching, and a scoring syntax for creating a repeatable series of events.",
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
