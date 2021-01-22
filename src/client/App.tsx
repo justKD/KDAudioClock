@@ -177,7 +177,7 @@ export const App = (): React.ReactElement => {
         <div className={classes.description}>
           <code>KDAudioClock</code> creates and manages timed events, which are
           each assigned unique identifiers. It also includes event syncing, time
-          stretching, and a scoring syntax forcreating a repeatable series of
+          stretching, and a scoring syntax for creating a repeatable series of
           events.
         </div>
         <div className={classes.description}>
