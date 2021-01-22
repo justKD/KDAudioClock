@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,500;0,700;1,300;1,500;1,700&display=swap');
+
+$fontFamily: 'Roboto Mono', 'Courier New', monospace;
+$fontWeightBold: 700;
+
+code {
+  font-family: $fontFamily;
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: $fontWeightBold;
+  }
+}

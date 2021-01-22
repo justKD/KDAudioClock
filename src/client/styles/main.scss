@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;0,900;1,300;1,500;1,900&display=swap');
+
+$fontFamily: Roboto, Helvetica, Arial, sans-serif;
+$fontSize: 16px;
+
+$fontWeightLight: 300;
+$fontWeightMedium: 500;
+$fontWeightBlack: 900;
+
+* {
+  box-sizing: border-box;
+  color: #212121;
+  font-family: $fontFamily;
+}
+
+body, html {
+  overscroll-behavior-x: none;
+  margin: 0;
+  font-size: $fontSize;
+  font-weight: $fontWeightLight;
+  line-height: 1.5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $fontWeightBlack;
+}
+
+em {
+  font-variant: 1;
+}
+
+strong {
+  font-weight: $fontWeightMedium;
+}
+
+.MuiAccordion-root:before {
+  background-color: transparent !important;
+}

@@ -1,0 +1,10 @@
+bugs:
+
+- in suspend example, if you suspend -> pause -> reschedule -> start, 
+the events don't restart correctly
+
+todo:
+
+check/clean up inline documentation
+complete unit tests
+add build

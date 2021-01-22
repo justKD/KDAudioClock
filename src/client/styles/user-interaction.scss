@@ -1,0 +1,20 @@
+@mixin no-pointer-events {
+  pointer-events: none;
+}
+
+@mixin no-user-select {
+  user-select: none;
+}
+
+.no-pointer-events {
+  @include no-pointer-events;
+}
+
+.no-user-select {
+  @include no-user-select;
+}
+
+.no-user-interaction {
+  @include no-pointer-events;
+  @include no-user-select;
+}
