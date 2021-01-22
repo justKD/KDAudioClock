@@ -5,6 +5,7 @@ the events don't restart correctly
 
 todo:
 
-check/clean up inline documentation
+check/clean up inline documentation 
+  - update descriptions with text from readme api section
 complete unit tests
 add build
