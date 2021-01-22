@@ -2,8 +2,6 @@
 
 ##### v 1.0.7 | © justKD 2020 | MIT License
 
-#
-
 This class lets you schedule asynchronous events using the audio hardware clock.
 
 `KDAudioClock` creates and manages timed events, which are each assigned unique identifiers. It also includes event syncing, time stretching, and a scoring syntax for creating a repeatable series of events.
@@ -15,8 +13,6 @@ It's based on [WAAClock](https://github.com/sebpiq/WAAClock) by [@sebpiq](https:
 [KDAudioClock Examples and Documentation](https://kdaudioclockdemo.justkd.app/)
 
 ## Basic Use
-
-#
 
 #### `start()`
 
@@ -93,8 +89,6 @@ clock.setInterval((ev) => {
 
 ## Extended Use
 
-#
-
 #### `schedule(opts)`
 
 Schedule any other timed event.
@@ -143,8 +137,6 @@ clock.sync(events);
 ```
 
 ##### Tip: use `sync` every so often to counter drifting that may occur between simultaneous long running timers.
-
-#
 
 ```
 const timer1 = clock.setInterval(playSound1, 500);
@@ -251,8 +243,6 @@ clock.score([
 
 ##### Loop scores by assigning it to a variable and calling itself.
 
-#
-
 ```
 const meter = clock.meter;
 const note = clock.createScoredEvent;
@@ -274,8 +264,6 @@ runScore();
 ```
 
 ##### Exit a score with `score.break()`.
-
-#
 
 ```
 const meter = clock.meter;
@@ -309,8 +297,6 @@ let runScore = () => {
 ```
 
 ##### Create reusable "measures" and add them to a score with the spread operator.
-
-#
 
 ```
 const meter = clock.meter;
