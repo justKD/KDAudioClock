@@ -41,12 +41,18 @@ export const ExampleDelete = (): React.ReactElement => {
       if (!scheduled) return null;
 
       const duration = scheduled - current;
-      const interval = event.get.loop().currentInterval / 1000;
+
+      let interval: null | undefined | number;
+      interval = event?.get?.loop()?.currentInterval;
+      interval = interval ? interval : 0;
+      interval = interval / 1000;
+
+      let id: null | undefined | string = event?.get?.uid();
+      id = id ? id : '';
+
       return (
         <TableRow key={index}>
-          <TableCell id={event.get.uid()}>
-            {event.get.uid().split('-').pop()}
-          </TableCell>
+          <TableCell id={id}>{id.split('-').pop()}</TableCell>
           <TableCell align='right'>{interval.toFixed(2)}</TableCell>
           <TableCell align='right'>
             {event.isSuspended() ? 'suspended' : duration.toFixed(2)}

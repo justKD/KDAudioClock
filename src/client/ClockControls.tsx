@@ -41,7 +41,7 @@ export const ClockControls = ({
   const classes = useStyles();
   const theme = useTheme();
   const mediaQueryXs = useMediaQuery(theme.breakpoints.down('xs'));
-  const indicatorRef = React.useRef<HTMLDivElement>();
+  const indicatorRef = React.useRef<HTMLDivElement>(null);
 
   const updateIndicatorColor = React.useCallback(
     (state: 'start' | 'stop' | 'pause') => {
