@@ -214,6 +214,8 @@ export const ExampleScore = (): React.ReactElement => {
 
         runScore();
         break;
+      default:
+        break;
     }
   }, [example, clock]);
 

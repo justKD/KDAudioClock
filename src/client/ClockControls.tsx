@@ -59,6 +59,8 @@ export const ClockControls = ({
         case 'pause':
           color = '#fff59d';
           break;
+        default:
+          break;
       }
 
       indicator.style.backgroundColor = color;
