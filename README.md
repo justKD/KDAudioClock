@@ -77,7 +77,7 @@ const ev = clock.setInterval(f, t);
 clock.clearInterval(ev);
 ```
 
-`KDAudioClockEvent` callback functions return the event itself.
+`KDAudioClockEvent` callback functions pass back the event itself.
 
 ```
 clock.setInterval((ev) => {
@@ -290,10 +290,10 @@ let runScore = () => {
             console.log('4');
             if (!maxed) runScore();
         }),
-      ]);
-    };
+    ]);
+};
 
-    runScore();
+runScore();
 ```
 
 ##### Create reusable "measures" and add them to a score with the spread operator.
@@ -360,6 +360,8 @@ new KDAudioClock(opts?: KDAudioClockParams)
 | `bpm?`       | `number`                             | Beats per minute used by the `meter` helper method to calculate metered time. Default is `60`.                                                                                                                                                                                                                                                                 |
 | `beat?`      | `number`                             | The note division that is assigned to the beat. Used by the `meter` helper method to calculate metered time. Default is `4` (quarter note).                                                                                                                                                                                                                    |
 
+#
+
 #### KDAudioClock Methods
 
 | Method      | Type                                   | Description                                                                                                                                                                                                                                                                                                                                                |
@@ -372,12 +374,16 @@ new KDAudioClock(opts?: KDAudioClockParams)
 | `isRunning` | `() => boolean`                        | Returns `true` if the clock is running or `false` if the clock has never been started, is paused, or has been stopped.                                                                                                                                                                                                                                     |
 | `isPaused`  | `() => boolean`                        | Returns `true` if the clock is paused.                                                                                                                                                                                                                                                                                                                     |
 
+#
+
 | Method          | Type                                                                                                                                       | Description                                                                                                                                                                                                                                                                                                                   |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `setTimeout`    | `(callback: (ev: KDAudioClockEvent) => void, delayInMs: number) => KDAudioClockEvent`                                                      | Shortcut for creating a scheduled event that mimics `window.setTimeout` functionality.                                                                                                                                                                                                                                        |
 | `setInterval`   | `(callback: (ev: KDAudioClockEvent) => void, intervalInMs: number) => KDAudioClockEvent`                                                   | Shortcut for creating a scheduled event that mimics `window.setInterval` functionality.                                                                                                                                                                                                                                       |
 | `clearInterval` | `(event: KDAudioClockEvent) => void`                                                                                                       | Shortcut for deleting an event that mimics `window.clearInterval` functionality.                                                                                                                                                                                                                                              |
 | `schedule`      | `(opts: KDAudioClockEventOptions | KDAudioClockEvent | KDAudioClockEvent[], deadline?: number) => KDAudioClockEvent | KDAudioClockEvent[]` | Create a scheduled event. The `opts` parameter must be an existing `KDAudioEvent`, an array of `KDAudioEvent`, or an object holding `KDAudioClockEventOptions`. `deadline` is optional and allows you to set an explicit start time in seconds for the event. `deadline` will default to `context.currentTime` if left empty. |
+
+#
 
 | Method               | Type                                                      | Description                                                                                                                                                                                                                                                    |
 | -------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -392,12 +398,16 @@ new KDAudioClock(opts?: KDAudioClockParams)
 | `getEventFor`        | `(eventID: string) => KDAudioClockEvent`                  | When passed a valid `string` identifier, this returns the associated `KDAudioClockEvent`.                                                                                                                                                                      |
 | `getEventUidEntries` | `() => [KDAudioClockEvent, string][]`                     | Returns an array `[KDAudioClockEvent, string][]` representing the internal map holding managed events and their UID associations.                                                                                                                              |
 
+#
+
 | Method        | Type                                                                            | Description                                                                                                                                                                                                                                                                                                                                                         |
 | ------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `sync`        | `(events: KDAudioClockEvent[] | KDAudioClockEvent, delayInMs?: number) => void` | Sync an array of `KDAudioClockEvent` to `context.currentTime` plus the `delayInMs` value.                                                                                                                                                                                                                                                                           |
 | `timeStretch` | `(events: KDAudioClockEvent[] | KDAudioClockEvent, ratio: number) => void`      | Alter the loop intervals for an array of `KDAudioClockEvent`. `timeStretch` will only affect looping events, and this value will always be applied to the initial interval time (ie. setting the `timeStretch` back to `1` will reset any stretching). The initial interval value will be multiplied by the `ratio` value for each subsequent tick. Default is `1`. |
 | `suspend`     | `(events: KDAudioClockEvent[] | KDAudioClockEvent) => void`                     | Suspend events, keeping them from being queued without deleting them. This does the same thing as `clock.pause` but allows you to target specific events.                                                                                                                                                                                                           |
 | `delete`      | `(events: KDAudioClockEvent[] | KDAudioClockEvent) => undefined`                | Delete events, removing them from the queue and preparing them for garbage collection. Always returns `undefined`.                                                                                                                                                                                                                                                  |
+
+#
 
 | Method              | Type                                                                                                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -408,6 +418,8 @@ new KDAudioClock(opts?: KDAudioClockParams)
 | `setBPM`            | `(bpm: number) => void`                                                                                             | Set the internally referenced beats-per-minute.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `getBeat`           | `() => number`                                                                                                      | Get the internally referenced metrical beat. This is only used by the `meter` method when calculating metrical durations. The default is `4` (quarter note gets the beat).                                                                                                                                                                                                                                                                                                                                     |
 | `setBeat`           | `(beat: number) => void`                                                                                            | Set the internally referenced metrical beat.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+
+#
 
 #### KDAudioClockEventOptions Parameters
 
@@ -420,6 +432,8 @@ new KDAudioClock(opts?: KDAudioClockParams)
 | `onComplete?` | `(event: KDAudioClockEvent) => void`           | Called when the number of intended repetitions is reached. If the `loop.repetitions` value is `Infinity`, this will never be called.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `onAborted?`  | `(event: KDAudioClockEvent) => void`           | Called if a looping event is deleted (not suspended) before it has reached its intended number of repetitions, including if the `loop.repetitions` value is `Infinity`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | `onMissed?`   | `(event: KDAudioClockEvent) => void`           | Called if a tick misses its deadline.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+
+#
 
 #### KDAudioClockEvent Methods
 
@@ -435,6 +449,8 @@ new KDAudioClock(opts?: KDAudioClockParams)
 | `updateWithInterval` | `(intervalInMs: number) => void` | Sets this events loop interval. This will set a new `initialInterval` and then update the `currentInterval` accounting for the time stretch value.                                                                                                                      |
 | `timeStretch`        | `(ratio: number) => void`        | If this event is a looping event, this will be applied to the initial interval time (ie. setting the `timeStretch` back to `1` will reset any stretching). The initial interval value will be multiplied by the `ratio` value for each subsequent tick. Default is `1`. |
 | `get`                | `object`                         | See parameters below.                                                                                                                                                                                                                                                   |
+
+#
 
 #### `new KDAudioClockEvent.get` Methods
 
